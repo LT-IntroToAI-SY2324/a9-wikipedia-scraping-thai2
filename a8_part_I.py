@@ -9,20 +9,21 @@ import re
 # should extract a match where the first group is the month, the second group the day
 # and the third group the year
 date_string = "November 9, 1982"
-pat = re.compile("REPLACE ME", re.IGNORECASE)
+# pat = re.compile("(\w)(\d),(\d[4])", re.IGNORECASE)
+pat = re.compile(".+,\d[4]", re.IGNORECASE)
 date_matches = pat.match(date_string)
 
 # problem 2
 # should extract a match where the first group is the number, the second the street, the
 # third the city, the fourth the state and the fifth the zip code
 address_string = "2501 Addison Street\nChicago, IL 60618"
-pat = re.compile("REPLACE ME", re.IGNORECASE)
+pat = re.compile("(/d[4])\s(\w)(\w)(\w)(\d[5])", re.IGNORECASE)
 address_matches = pat.match(address_string)
 
 # problem 3
 # should match all hashtags
 tweet_string = "hi everyone! #cs #python #LT #champions"
-pat = re.compile("REPLACE ME", re.IGNORECASE)
+pat = re.compile("(#\w)", re.IGNORECASE)
 hashtag_matches = pat.findall(tweet_string)
 
 # until you uncomment any code line below you'll get an EOF linting error feel free to
@@ -30,13 +31,13 @@ hashtag_matches = pat.findall(tweet_string)
 if __name__ == "__main__":
     print("<<<<< Date Problem >>>>>\n")
     # uncomment the following prints to see date results and asserts to test
-    # print(f"month is: {date_matches.group(1)}!") # should print "month is: November"
-    # print(f"day is: {date_matches.group(2)}!")   # should print "day is: 9"
-    # print(f"year is: {date_matches.group(3)}!")  # should print "year is: 1982"
-    # assert date_matches.group(1) == 'November', "Incorrect month"
-    # assert date_matches.group(2) == '9', "Incorrect day"
-    # assert date_matches.group(3) == '1982', "Incorrect year"
-    # print('\n<<<< Date extraction tests passed >>>>\n')
+    print(f"month is: {date_matches.group(1)}!") # should print "month is: November"
+    print(f"day is: {date_matches.group(2)}!")   # should print "day is: 9"
+    print(f"year is: {date_matches.group(3)}!")  # should print "year is: 1982"
+    assert date_matches.group(1) == 'November', "Incorrect month"
+    assert date_matches.group(2) == '9', "Incorrect day"
+    assert date_matches.group(3) == '1982', "Incorrect year"
+    print('\n<<<< Date extraction tests passed >>>>\n')
 
     print("<<<<< Address Problem >>>>>\n")
     # uncomment the following prints to see results and asserts to test
@@ -54,7 +55,7 @@ if __name__ == "__main__":
 
     print("<<<<< Hashtag Problem >>>>>\n")
     # uncomment the following prints to see results and asserts to test
-    # print(f"hashtags are: {mats}") # should be ['cs', 'python', 'LT', 'champions']"
+    # print(f"hashtags are: {hashtag_matches}") # should be ['cs', 'python', 'LT', 'champions']"
     # assert mats == ['cs', 'python', 'LT', 'champions'], "Incorrect hashtags"
     # print('\n<<<< Hashtag extraction tests passed >>>>\n')
 
