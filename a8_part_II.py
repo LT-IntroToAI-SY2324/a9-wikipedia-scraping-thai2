@@ -21,9 +21,7 @@ def get_planet_radius(planet_name: str) -> str:
     infobox_text = clean_text(get_first_infobox_text(get_page_html(planet_name)))
     # TODO: fill this in
 
-    
-
-    pattern = "IDK YET"
+    pattern = "Polar radius(?P<radius>\d+.\d+)"
     error_text = "Page infobox has no polar radius information"
     match = get_match(infobox_text, pattern, error_text)
     return match.group("radius")
@@ -40,26 +38,28 @@ def get_birth_date(name: str) -> str:
     """
     infobox_text = clean_text(get_first_infobox_text(get_page_html(name)))
     # TODO: fill this in
-    pattern = "REPLACE ME"
+    pattern = "Born\w*(?P<birth>\d+?\d)"
     error_text = (
         "Page infobox has no birth information (at least none in xxxx-xx-xx format)"
     )
     match = get_match(infobox_text, pattern, error_text)
+    print(match)
     return match.group("birth")
 
-# infobox_text = get_first_infobox_text(get_page_html("Mars"))
+# infobox_text = get_first_infobox_text(get_page_html("Saturn"))
+# infobox_text = get_first_infobox_text(get_page_html("Grace Hopper"))
 # print(infobox_text)
 
 if __name__ == "__main__":
-    print("\n<<<<<<<<<<<<<< Testing Planet Radius >>>>>>>>>>>>>>")
-    # should be 3,376.2
-    print(f'Mars has a polar radius of {get_planet_radius("Mars")}km')
-    # should be 6356.752
-    print(f'Earth has a polar radius of {get_planet_radius("Earth")}km')
-    # should be 66,854
-    print(f'Jupiter has a polar radius of {get_planet_radius("Jupiter")}km')
-    # should be 54,364
-    print(f'Saturn has a polar radius of {get_planet_radius("Saturn")}km')
+    # print("\n<<<<<<<<<<<<<< Testing Planet Radius >>>>>>>>>>>>>>")
+    # # should be 3,376.2
+    # print(f'Mars has a polar radius of {get_planet_radius("Mars")}km')
+    # # should be 6356.752
+    # print(f'Earth has a polar radius of {get_planet_radius("Earth")}km')
+    # # should be 66,854
+    # print(f'Jupiter has a polar radius of {get_planet_radius("Jupiter")}km')
+    # # should be 54,364
+    # print(f'Saturn has a polar radius of {get_planet_radius("Saturn")}km')
 
     # uncomment below lines for tests once you think you're getting the right output
     # print('\n<<<< Running asserts, this might take a sec >>>>')
