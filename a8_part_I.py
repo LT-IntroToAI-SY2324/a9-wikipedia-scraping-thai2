@@ -18,7 +18,6 @@ date_matches = pat.match(date_string)
 address_string = "2501 Addison Street\nChicago, IL 60618"
 pat = re.compile("(?P<number>\d+)\s(?P<street>.+)\n(?P<city>\w+),\s(?P<state>\w+)\s(?P<zip>\d+)", re.IGNORECASE)
 address_matches = pat.match(address_string)
-print(address_matches.group(0))
 
 # problem 3
 # should match all hashtags
